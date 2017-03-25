@@ -65,7 +65,7 @@ def extention_lines(img, lines, region):
         lines = coef_filtering(lines)        
         left_line = [[], []]
         right_line = [[],[]]
-        global lprev, rprev
+        
         for line in lines:
             coef = (line[0][3] - line[0][1]) / (line[0][2] - line[0][0])
             if coef < 0:
@@ -74,7 +74,8 @@ def extention_lines(img, lines, region):
             else:
                 right_line[1].extend(line[0][1::2])
                 right_line[0].extend(line[0][::2])
-
+        
+        global lprev, rprev
         l = get_equation(left_line, lprev)
         r = get_equation(right_line, rprev)
 
